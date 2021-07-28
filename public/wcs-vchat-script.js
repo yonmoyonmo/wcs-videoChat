@@ -30,7 +30,7 @@ navigator.mediaDevices
     socket.on("user-connected", (userId) => {
       setTimeout(() => {
         connectToNewUser(userId, stream);
-      }, 4000);
+      }, 2000);
     });
   });
 
