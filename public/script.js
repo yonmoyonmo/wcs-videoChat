@@ -4,7 +4,7 @@ const videoGrid = document.getElementById("video-grid");
 const myPeer = new Peer(undefined, {
   host: "/",
   port: "4001",
-  path: "wcs-peerjs",
+  path: "/wcs-peerjs",
 });
 
 const myVideo = document.createElement("video");
