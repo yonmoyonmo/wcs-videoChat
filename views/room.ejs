@@ -31,11 +31,25 @@
         object-fit: cover;
         margin: 1rem;
       }
+      @media screen and (min-width: 600px) {
+        #video-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, 100px);
+          grid-auto-rows: 100px;
+          padding: 1rem;
+        }
+        video {
+          width: 90px;
+          height: 90px;
+          object-fit: cover;
+          margin: 1rem;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <div class="window" style="height: 100vmin; width: 100%; overflow: hidden">
+    <div class="window" style="width: 100%;">
       <div class="title-bar">
         <div class="title-bar-text">Wonmo Cyber Sool Mukbang</div>
         <div class="title-bar-controls">
