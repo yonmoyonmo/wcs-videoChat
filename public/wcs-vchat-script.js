@@ -2,7 +2,7 @@ const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
 
 const myPeer = new Peer(undefined, {
-  host: "/",
+  host: "https://wonmocyberschool.com/",
   port: "4001",
   path: "/wcs-peerjs",
 });
