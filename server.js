@@ -25,6 +25,9 @@ app.get('/vchat/:room', (req, res) => {
 
 io.on('connection', socket => {
   socket.on('join-room', (roomId, userId) => {
+    
+    console.log("roomID: "+roomId+"\nuserID: "+userId);
+
     socket.join(roomId)
     socket.to(roomId).broadcast.emit('user-connected', userId)
     socket.on('disconnect', () => {
