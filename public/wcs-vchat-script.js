@@ -7,6 +7,36 @@ const myPeer = new Peer(undefined, {
   path: "/wcs-peerjs",
 });
 
+const roomIdCheck = async (roomId) => {
+  console.log("in check func");
+  const roomlist = await fetch(
+    "https://wonmocyberschool.com/api/public/roomlist",
+    {
+      method: "GET",
+    }
+  );
+  const roomlistData = await roomlist.json();
+
+  console.log(roomlistData);
+
+  let existNames = [];
+
+  if (roomlistData && roomlistData.success) {
+    existRooms = roomlistData.data;
+  }
+  existNames = existRooms.map((room) => {
+    return room.roomName;
+  });
+  console.log(existNames);
+  if (!existNames.includes(roomId)) {
+    console.log(false);
+    return false;
+  } else{
+    console.log(true);
+    return true;
+  } 
+};
+
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 
@@ -30,7 +60,7 @@ navigator.mediaDevices
     socket.on("user-connected", (userId) => {
       setTimeout(() => {
         connectToNewUser(userId, stream);
-      }, 2000);
+      }, 3000);
     });
   });
 
@@ -38,8 +68,17 @@ socket.on("user-disconnected", (userId) => {
   if (peers[userId]) peers[userId].close();
 });
 
+const check = roomIdCheck(ROOM_ID);
+
+console.log("debug: "+check);
+
 myPeer.on("open", (id) => {
-  socket.emit("join-room", ROOM_ID, id);
+  console.log("checking room Id...");
+  if (chcek) {
+    socket.emit("join-room", ROOM_ID, id);
+  } else {
+    window.location.href = "https://wonmocyberschool.com/wcs-sool-mukbang";
+  }
 });
 
 function connectToNewUser(userId, stream) {
