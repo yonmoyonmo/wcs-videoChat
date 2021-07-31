@@ -72,7 +72,7 @@ myPeer.on("open", (id) => {
   console.log("checking room Id...");
   const check = roomIdCheck(ROOM_ID);
   console.log("debug: "+check);
-  if (chcek) {
+  if (check) {
     socket.emit("join-room", ROOM_ID, id);
   } else {
     window.location.href = "https://wonmocyberschool.com/wcs-sool-mukbang";
