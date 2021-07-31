@@ -70,7 +70,7 @@ socket.on("user-disconnected", (userId) => {
 
 myPeer.on("open", (id) => {
   console.log("checking room Id...");
-  const checkprom = roomIdCheck(ROOM_ID).then((check) => {
+  roomIdCheck(ROOM_ID).then((check) => {
     console.log("debug: " + check);
     if (check) {
       socket.emit("join-room", ROOM_ID, id);
