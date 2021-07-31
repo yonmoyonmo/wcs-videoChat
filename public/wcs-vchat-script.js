@@ -31,10 +31,10 @@ const roomIdCheck = async (roomId) => {
   if (!existNames.includes(roomId)) {
     console.log(false);
     return false;
-  } else{
+  } else {
     console.log(true);
     return true;
-  } 
+  }
 };
 
 const myVideo = document.createElement("video");
@@ -70,13 +70,14 @@ socket.on("user-disconnected", (userId) => {
 
 myPeer.on("open", (id) => {
   console.log("checking room Id...");
-  const check = roomIdCheck(ROOM_ID);
-  console.log("debug: "+check);
-  if (check) {
-    socket.emit("join-room", ROOM_ID, id);
-  } else {
-    window.location.href = "https://wonmocyberschool.com/wcs-sool-mukbang";
-  }
+  const checkprom = roomIdCheck(ROOM_ID).then((check) => {
+    console.log("debug: " + check);
+    if (check) {
+      socket.emit("join-room", ROOM_ID, id);
+    } else {
+      window.location.href = "https://wonmocyberschool.com/wcs-sool-mukbang";
+    }
+  });
 });
 
 function connectToNewUser(userId, stream) {
