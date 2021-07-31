@@ -68,12 +68,10 @@ socket.on("user-disconnected", (userId) => {
   if (peers[userId]) peers[userId].close();
 });
 
-const check = roomIdCheck(ROOM_ID);
-
-console.log("debug: "+check);
-
 myPeer.on("open", (id) => {
   console.log("checking room Id...");
+  const check = roomIdCheck(ROOM_ID);
+  console.log("debug: "+check);
   if (chcek) {
     socket.emit("join-room", ROOM_ID, id);
   } else {
